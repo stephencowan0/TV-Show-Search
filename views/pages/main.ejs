@@ -1,0 +1,37 @@
+<%- include ('../partials/header') %>
+    <%- include ('../partials/menu') %>
+
+        <main>
+            <%- include ('../partials/message') %>
+                <center>
+                    <div class="container">
+                        <form action="/main" method="GET" class="form-inline my-2 my-lg-0">
+                            <label for="name" class="form-label">
+                                <h1>Show Search</h1>
+                            </label>
+                            <input class="form-control" type="text" id="showName" name="showName">
+                            <button class="btn btn-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                    <% if (results) { %>
+                        <div class="container" style="background-color: grey;">
+                            <h1>
+                                <%= results.data.name %>
+                            </h1>
+                            <img src="<%= results.data.image.medium %>">
+                            <h3>
+                                Genre: <%= results.data.genres %>
+                            </h3>
+                            <p>
+                                Summary: <%= results.data.summary=results.data.summary.replace(/<\/?[^>]+(>|$)/g, "") %>
+                            </p>
+                            <p>
+                                Average Rating: <%= results.data.rating.average %>
+                            </p>
+                        </div>
+                        <% } %>
+
+                </center>
+        </main>
+
+        <%- include ('../partials/footer') %>
